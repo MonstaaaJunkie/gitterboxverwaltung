@@ -1,0 +1,9 @@
+[build]
+builder = "DOCKERFILE"
+
+[deploy]
+numReplicas = 1
+restartPolicyType = "ON_FAILURE"
+
+[env]
+JWT_SECRET = "gitterbox-secret"
