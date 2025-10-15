@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login – Gitterbox-Tracker</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="app-header">
+  <div class="topnav">
+    <h1>🔐 Login – Gitterbox-Tracker</h1>
+  </div>
+</header>
+<main class="container">
+  <section class="card">
+    <h2>Anmelden</h2>
+    <form id="login-form" class="grid">
+      <div class="field">
+        <label>Benutzername</label>
+        <input id="username" required autocomplete="username">
+      </div>
+      <div class="field">
+        <label>Passwort</label>
+        <input id="password" type="password" required autocomplete="current-password">
+      </div>
+      <div class="actions">
+        <button class="btn primary" type="submit">Login</button>
+      </div>
+    </form>
+    <p class="hint">Standard: <code>admin</code> / <code>admin</code> (bitte ändern)</p>
+  </section>
+</main>
+<footer class="app-footer">
+  <p>© 2025 Gitterbox-Tracker</p>
+</footer>
+<script src="login.js" defer></script>
+<script>
+if ('serviceWorker' in navigator) { window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(console.error)); }
+</script>
+</body>
+</html>

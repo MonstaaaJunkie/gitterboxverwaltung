@@ -1,0 +1,24 @@
+:root { --bg:#0b1020; --panel:#111827; --card:#0f172a; --muted:#94a3b8; --text:#e5e7eb; --primary:#2563eb; --ok:#22c55e; --soon:#f59e0b; --overdue:#ef4444; --border:#1f2937; --shadow:0 10px 25px rgba(0,0,0,.35); }
+*{ box-sizing:border-box } html,body{ height:100% } body{ margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; color:var(--text); background:linear-gradient(180deg,#0b1020 0%,#0b1020 50%,#0a0f1f 100%) }
+.app-header,.app-footer{ background:rgba(17,24,39,.8); backdrop-filter: blur(8px); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:10; box-shadow:var(--shadow) }
+.app-footer{ top:auto; bottom:0; border-top:1px solid var(--border); border-bottom:none }
+.app-header{ display:flex; align-items:center; justify-content:space-between; padding:14px 20px }
+.header-actions{ display:flex; gap:10px; flex-wrap:wrap }
+.container{ max-width:1100px; margin:30px auto 90px; padding:0 16px }
+.card{ background:var(--card); border:1px solid var(--border); border-radius:18px; padding:18px; box-shadow:var(--shadow); margin-bottom:18px }
+h1,h2,h3{ margin:0 0 10px } h1{ font-size:22px } h2{ font-size:18px; color:#c7d2fe } .hint{ color:var(--muted); font-size:12px }
+.grid{ display:grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap:14px } .field{ display:flex; flex-direction:column; gap:8px } .field.full{ grid-column:1/-1 } label{ color:var(--muted); font-size:12px }
+input,textarea,select{ background:#0b1222; color:var(--text); border:1px solid var(--border); border-radius:10px; padding:10px 12px; outline:none }
+input:focus,textarea:focus,select:focus{ border-color:#334155 }
+.barcode-row{ display:flex; gap:8px; align-items:center } .actions{ display:flex; gap:10px; margin-top:4px }
+.btn{ background:#111b33; color:var(--text); border:1px solid var(--border); padding:10px 12px; border-radius:10px; cursor:pointer }
+.btn:hover{ background:#132243 } .btn.primary{ background:var(--primary); border-color:#1e40af } .btn-danger{ background:var(--overdue); border-color:#b91c1c } .btn-secondary{ background:#1f2937 }
+.list-header{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap } .filters{ display:flex; gap:10px; flex-wrap:wrap }
+.table-wrap{ overflow:auto; border-radius:12px; border:1px solid var(--border) } table{ width:100%; border-collapse:collapse } thead{ background:#0b1222 } th,td{ padding:12px; border-bottom:1px solid var(--border); text-align:left; white-space:nowrap } tbody tr:hover{ background:#0b122214 }
+.badge{ display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border-radius:999px; font-size:12px; border:1px solid var(--border) }
+.badge.ok{ background:#052b18; border-color:#064e3b; color:#d1fae5 } .badge.soon{ background:#3b2602; border-color:#713f12; color:#ffedd5 } .badge.overdue{ background:#3a0a0a; border-color:#7f1d1d; color:#fee2e2 }
+.table-actions{ display:flex; gap:8px } .table-actions .btn{ padding:6px 10px; font-size:12px }
+.modal{ position:fixed; inset:0; display:grid; place-items:center; background:rgba(0,0,0,.6) } .hidden{ display:none !important } .modal-content{ width:min(680px,96vw); background:var(--panel); border:1px solid var(--border); border-radius:16px; padding:14px; box-shadow:var(--shadow) } .modal-header{ display:flex; align-items:center; justify-content:space-between }
+.topnav{ display:flex; gap:10px; align-items:center } .topnav a{ color:#cbd5e1; text-decoration:none } .topnav a:hover{ text-decoration:underline }
+.app-footer{ text-align:center; font-size:12px; color:var(--muted); padding:10px }
+@media (max-width:720px){ .grid{ grid-template-columns:1fr } }

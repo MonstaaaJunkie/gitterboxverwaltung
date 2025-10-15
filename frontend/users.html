@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Benutzer – Gitterbox-Tracker</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="users.js"></script>
+</head>
+<body>
+<header class="app-header">
+  <div class="topnav">
+    <h1>👥 Benutzerverwaltung</h1>
+    <nav class="topnav">
+      <a href="/index.html">Bestand</a>
+      <a href="#" id="logout">Logout</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="card">
+    <h2>Neuen Benutzer anlegen</h2>
+    <form id="user-form" class="grid">
+      <div class="field">
+        <label>Benutzername</label>
+        <input id="u-username" required>
+      </div>
+      <div class="field">
+        <label>Passwort</label>
+        <input id="u-password" type="password" required>
+      </div>
+      <div class="field">
+        <label>Rolle</label>
+        <select id="u-role">
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <div class="actions">
+        <button class="btn primary" type="submit">Anlegen</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="card">
+    <h2>Benutzerliste</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>ID</th><th>Benutzername</th><th>Rolle</th><th>Aktionen</th></tr></thead>
+        <tbody id="users-body"></tbody>
+      </table>
+    </div>
+    <p class="hint">Hinweis: Du kannst dich nicht selbst löschen.</p>
+  </section>
+</main>
+
+<footer class="app-footer">
+  <p>© 2025 Gitterbox-Tracker • Benutzerverwaltung</p>
+</footer>
+</body>
+</html>

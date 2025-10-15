@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gitterbox-Tracker</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#0f172a">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/html5-qrcode" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+<header class="app-header">
+  <div class="topnav">
+    <h1>📦 Gitterbox-Tracker</h1>
+    <nav class="topnav">
+      <a href="/index.html">Bestand</a>
+      <a id="admin-link" href="/users.html" style="display:none">Benutzer</a>
+      <a href="#" id="logout">Logout</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="card">
+    <h2>Neue Gitterbox erfassen</h2>
+    <form id="box-form" class="grid">
+      <div class="field">
+        <label>Barcode</label>
+        <div class="barcode-row">
+          <input id="barcode" type="text" placeholder="Scannen oder eintippen" required />
+          <button id="btn-scan" type="button" class="btn">Scanner</button>
+        </div>
+        <div id="scanner-modal" class="modal hidden" aria-hidden="true">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3>Barcode scannen</h3>
+              <button type="button" id="close-scanner" aria-label="Schließen">✕</button>
+            </div>
+            <div id="qr-reader"></div>
+            <p class="hint">Kamera erlauben. Unterstützt QR, Code128, EAN u.a.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Inhalt / Bezeichnung</label>
+        <input id="title" type="text" placeholder="z. B. Patientenakten Q1 2025" required />
+      </div>
+
+      <div class="field">
+        <label>Anlagedatum</label>
+        <input id="createdAt" type="date" required />
+      </div>
+
+      <div class="field">
+        <label>Entsorgungsdatum</label>
+        <input id="disposeAt" type="date" required />
+      </div>
+
+      <div class="field full">
+        <label>Notiz (optional)</label>
+        <textarea id="note" rows="2" placeholder="Zusatzinfos, Lagerort, usw."></textarea>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn primary">Speichern</button>
+        <button type="reset" class="btn btn-secondary">Zurücksetzen</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="card">
+    <div class="list-header">
+      <h2>Bestand</h2>
+      <div class="filters">
+        <input id="search" type="search" placeholder="Suche nach Barcode, Titel, Notiz" />
+        <select id="status-filter">
+          <option value="all">Alle</option>
+          <option value="ok">OK</option>
+          <option value="soon">Bald fällig (30 Tage)</option>
+          <option value="overdue">Überfällig</option>
+        </select>
+        <select id="sort-by">
+          <option value="createdAt_desc">Neueste angelegt</option>
+          <option value="createdAt_asc">Älteste angelegt</option>
+          <option value="disposeAt_asc">Frühestes Entsorgungsdatum</option>
+          <option value="disposeAt_desc">Spätestes Entsorgungsdatum</option>
+          <option value="title_asc">Titel A–Z</option>
+          <option value="title_desc">Titel Z–A</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Barcode</th>
+            <th>Titel</th>
+            <th>Angelegt</th>
+            <th>Entsorgung</th>
+            <th>Status</th>
+            <th>Aktionen</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer class="app-footer">
+  <p>© 2025 Gitterbox-Tracker • Zentral • Login • SQLite</p>
+</footer>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(console.error));
+}
+</script>
+</body>
+</html>
