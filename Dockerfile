@@ -15,7 +15,7 @@ WORKDIR /app
 
 # copy frontend
 COPY frontend /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # expose port
 EXPOSE 5000
