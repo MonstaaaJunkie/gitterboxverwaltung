@@ -12,6 +12,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`🚀 Backend läuft auf Port ${PORT}`);
+});
+
+
 // 🔍 Debug: prüfen ob /data existiert
 if (!fs.existsSync("/data")) {
   console.error("❌ FEHLER: Verzeichnis /data existiert NICHT! Bitte Volume prüfen.");
