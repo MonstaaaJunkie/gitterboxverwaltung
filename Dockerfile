@@ -7,8 +7,8 @@ WORKDIR /app
 COPY backend ./backend
 WORKDIR /app/backend
 RUN npm install && npm cache clean --force
-WORKDIR /app
 
+WORKDIR /app
 COPY frontend /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 
