@@ -1,10 +1,9 @@
 # --- Build Stage ---
-FROM node:20-alpine
+FROM node:20-slim
 
-# install nginx
-RUN apk add --no-cache nginx python3 make g++
+# install nginx + build tools
+RUN apt-get update && apt-get install -y nginx python3 make g++ sqlite3 && rm -rf /var/lib/apt/lists/*
 
-# setup app structure
 WORKDIR /app
 
 # copy backend
@@ -17,9 +16,7 @@ WORKDIR /app
 COPY frontend /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# expose port
 EXPOSE 5000
 ENV PORT=5000
 
-# start both backend and nginx
 CMD ["/bin/sh", "-c", "node /app/backend/server.js & nginx -g 'daemon off;'"]
