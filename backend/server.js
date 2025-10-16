@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import fs from "fs";
-import bcrypt from "bcrypt";
+const bcrypt = require("bcryptjs");
 import jwt from "jsonwebtoken";
 import { v4 as uuidv4 } from "uuid";
 
