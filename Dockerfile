@@ -9,7 +9,7 @@ WORKDIR /app/backend
 RUN npm install && npm cache clean --force
 
 WORKDIR /app
-COPY frontend /usr/share/nginx/html
+COPY frontend /app/frontend/html
 COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 5000
