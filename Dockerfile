@@ -4,11 +4,14 @@ RUN apt-get update && apt-get install -y nginx python3 make g++ sqlite3 && rm -r
 
 WORKDIR /app
 
-COPY backend ./backend
+# --- Backend installieren ---
+COPY backend/package*.json ./backend/
 WORKDIR /app/backend
-RUN npm install --omit=dev && npm cache clean --force
-WORKDIR /app
+# erzwingt Kompilation und bewahrt node_modules
+RUN npm install --build-from-source sqlite3 && npm cache clean --force
 
+WORKDIR /app
+COPY backend ./backend
 COPY frontend /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 
