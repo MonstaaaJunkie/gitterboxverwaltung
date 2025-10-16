@@ -10,6 +10,7 @@ WORKDIR /app/backend
 # erzwingt Kompilation und bewahrt node_modules
 RUN npm install --build-from-source sqlite3 && npm cache clean --force
 RUN npm install uuid && npm install --omit=dev && npm cache clean --force
+RUN npm install bcryptjs && npm cache clean --force
 
 
 WORKDIR /app
